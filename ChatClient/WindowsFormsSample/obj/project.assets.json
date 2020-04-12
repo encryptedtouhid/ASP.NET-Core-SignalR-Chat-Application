@@ -2200,11 +2200,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\KhaledMdTuhidulHossa\\Desktop\\SignalR-samples-master\\WindowsFormsSample\\WindowsFormsSample\\WindowsFormsSample.csproj",
+      "projectUniqueName": "C:\\Users\\KhaledMdTuhidulHossa\\Documents\\Chat-API\\ChatClient\\WindowsFormsSample\\WindowsFormsSample.csproj",
       "projectName": "WindowsFormsSample",
-      "projectPath": "C:\\Users\\KhaledMdTuhidulHossa\\Desktop\\SignalR-samples-master\\WindowsFormsSample\\WindowsFormsSample\\WindowsFormsSample.csproj",
+      "projectPath": "C:\\Users\\KhaledMdTuhidulHossa\\Documents\\Chat-API\\ChatClient\\WindowsFormsSample\\WindowsFormsSample.csproj",
       "packagesPath": "C:\\Users\\KhaledMdTuhidulHossa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\KhaledMdTuhidulHossa\\Desktop\\SignalR-samples-master\\WindowsFormsSample\\WindowsFormsSample\\obj\\",
+      "outputPath": "C:\\Users\\KhaledMdTuhidulHossa\\Documents\\Chat-API\\ChatClient\\WindowsFormsSample\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

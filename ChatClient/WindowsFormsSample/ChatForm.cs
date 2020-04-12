@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.AspNetCore.SignalR.Client;
 
@@ -32,7 +33,9 @@ namespace WindowsFormsSample
                 .WithUrl(addressTextBox.Text)
                 .Build();
 
-            _connection.On<string, string>("broadcastMessage", (s1, s2) => OnSend(s1, s2));
+            //_connection.On<string, string>("broadcastMessage", (s1, s2) => OnSend(s1, s2));
+            _connection.On<string, string>("ReceiveMessage", OnSend);
+            //_connection.On<string, string>("ReceiveMessage", (s1, s2) => OnSend(s1, s2));
 
             Log(Color.Gray, "Starting connection...");
             try
@@ -76,7 +79,18 @@ namespace WindowsFormsSample
 
         private async void sendButton_Click(object sender, EventArgs e)
         {
+
             Message message = new Message();
+
+            try
+            {
+                message.ConnectionId = await _connection.InvokeAsync<string>("GetConnectionId");
+              
+            }
+            catch (Exception)
+            {
+                
+            }
             message.SenderUniqueCode = Guid.Parse("c83b9a83-7773-48ea-931b-2a4fe74128af");
             message.Sender = "Desktop";
             message.RecipientUniqueCode = Guid.Parse("aaa44cc6-727b-4f2b-bc58-03c7d466a256");

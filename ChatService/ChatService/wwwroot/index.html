@@ -37,14 +37,18 @@
                                 .build();
 
             // Create a function that the hub can call to broadcast messages.
-            connection.on('broadcastMessage', function (name, message) {
-                // Html encode display name and message.
-                var encodedName = name;
-                var encodedMsg = message;
-                // Add the message to the page.
-                var liElement = document.createElement('li');
-                liElement.innerHTML = '<strong>' + encodedName + '</strong>:&nbsp;&nbsp;' + encodedMsg;
-                document.getElementById('discussion').appendChild(liElement);
+            //connection.on('ReceiveMessage', function (name, message) {
+            //    // Html encode display name and message.
+            //    var encodedName = name;
+            //    var encodedMsg = message;
+            //    // Add the message to the page.
+            //    var liElement = document.createElement('li');
+            //    liElement.innerHTML = '<strong>' + encodedName + '</strong>:&nbsp;&nbsp;' + encodedMsg;
+            //    document.getElementById('discussion').appendChild(liElement);
+            //});
+
+            connection.on("ReceiveMessage", function (Sender, Contents) {
+                console.log(Sender + ":" + Contents);
             });
 
             // Transport fallback functionality is now built into start.

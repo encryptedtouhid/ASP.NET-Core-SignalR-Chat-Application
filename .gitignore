@@ -1,1 +1,3 @@
 ChatService/ChatService/Properties/PublishProfiles/qc.codexen.net - Web Deploy.pubxml
+ChatService/ChatService/bin
+ChatService/ChatService/obj

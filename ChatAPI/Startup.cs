@@ -25,6 +25,11 @@ namespace ChatAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSignalR(options =>
+            {
+                options.ClientTimeoutInterval = TimeSpan.FromMinutes(1);
+                options.KeepAliveInterval = TimeSpan.FromSeconds(30);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +47,7 @@ namespace ChatAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chathub");
             });
         }
     }

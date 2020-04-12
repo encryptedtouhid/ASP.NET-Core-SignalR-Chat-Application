@@ -9,6 +9,7 @@ namespace WindowsFormsSample
     public partial class Message
     {
         public int Id { get; set; }
+        public string ConnectionId { get; set; }
         public Guid? RecipientUniqueCode { get; set; }
         public string Recipient { get; set; }
         public Guid? SenderUniqueCode { get; set; }

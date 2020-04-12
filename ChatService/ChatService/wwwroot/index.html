@@ -73,7 +73,7 @@
                     document.getElementById('sendmessage').addEventListener('click', function (event) {
 
                         var connectionId = sessionStorage.getItem('conectionId');
-                        var message = { "Sender": name, "Contents": messageInput.value, "Recipient": "Khaled", "ConnectionId": sessionStorage.getItem("connectionId") };
+                        var message = { "Sender": name, "Contents": messageInput.value, "Recipient": "Desktop", "ConnectionId": sessionStorage.getItem("connectionId") };
                         connection.invoke('SendMessage', message);
 
 

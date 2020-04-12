@@ -84,8 +84,10 @@ namespace WindowsFormsSample
 
             try
             {
-                message.ConnectionId = await _connection.InvokeAsync<string>("GetConnectionId");
-              
+                //message.ConnectionId = await _connection.InvokeAsync<string>("GetConnectionId");
+                message.ConnectionId = "NiZhzjXbRK3QEVlNZQLuSA";
+
+
             }
             catch (Exception)
             {

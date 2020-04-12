@@ -59,7 +59,6 @@
 
             connection.start()
                 .then(function () {
-                    var connectionId = "";
 
                     connection.invoke('GetConnectionId')
                         .then(function (connectionId) {

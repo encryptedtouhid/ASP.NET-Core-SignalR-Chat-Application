@@ -25,6 +25,7 @@
         document.addEventListener('DOMContentLoaded', function () {
 
             var messageInput = document.getElementById('message');
+            
 
             // Get the user name and store it to prepend to messages.
             var name = prompt('Enter your name:', '');
@@ -34,7 +35,7 @@
             // Start the connection.
             var connection = new signalR.HubConnectionBuilder()
                                 .withUrl('/chat')
-                                .build();
+                .build();
 
             // Create a function that the hub can call to broadcast messages.
             //connection.on('ReceiveMessage', function (name, message) {
@@ -47,19 +48,35 @@
             //    document.getElementById('discussion').appendChild(liElement);
             //});
 
+
+
             connection.on("ReceiveMessage", function (Sender, Contents) {
                 console.log(Sender + ":" + Contents);
+                var liElement = document.createElement('li');
+                liElement.innerHTML = '<strong>' + Sender + '</strong>:&nbsp;&nbsp;' + Contents;
+                document.getElementById('discussion').appendChild(liElement);
             });
 
-            // Transport fallback functionality is now built into start.
             connection.start()
                 .then(function () {
+                    var connectionId = "";
+
+                    connection.invoke('GetConnectionId')
+                        .then(function (connectionId) {
+                            connectionId = connectionId;
+                            sessionStorage.setItem("connectionId", connectionId);
+                            console.log(connectionId);
+                        }).catch(err => console.error(err.toString()));;
+
+
                     console.log('connection started');
                     document.getElementById('sendmessage').addEventListener('click', function (event) {
-                        // Call the Send method on the hub.
-                        connection.invoke('send', name, messageInput.value);
 
-                        // Clear text box and reset focus for next comment.
+                        var connectionId = sessionStorage.getItem('conectionId');
+                        var message = { "Sender": name, "Contents": messageInput.value, "Recipient": "Khaled", "ConnectionId": sessionStorage.getItem("connectionId") };
+                        connection.invoke('SendMessage', message);
+
+
                         messageInput.value = '';
                         messageInput.focus();
                         event.preventDefault();
@@ -68,6 +85,9 @@
             .catch(error => {
                 console.error(error.message);
             });
+
+           
+
         });
     </script>
 </body>

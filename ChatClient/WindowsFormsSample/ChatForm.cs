@@ -34,8 +34,14 @@ namespace WindowsFormsSample
                 .Build();
 
             //_connection.On<string, string>("broadcastMessage", (s1, s2) => OnSend(s1, s2));
-            _connection.On<string, string>("ReceiveMessage", OnSend);
+
             //_connection.On<string, string>("ReceiveMessage", (s1, s2) => OnSend(s1, s2));
+            //_connection.On<Message>("ReceiveMessage", (data) => OnSend(data.Sender, data.Contents));
+
+
+            _connection.On<string, string>("SendMessage", (Sender, Contents) =>{
+                Console.WriteLine($"[{DateTime.Now.ToString()}] Received message from server {Sender}: {Contents}");
+            });
 
             Log(Color.Gray, "Starting connection...");
             try
@@ -84,14 +90,14 @@ namespace WindowsFormsSample
 
             try
             {
-                //message.ConnectionId = await _connection.InvokeAsync<string>("GetConnectionId");
-                message.ConnectionId = "NiZhzjXbRK3QEVlNZQLuSA";
+                var myconid = await _connection.InvokeAsync<string>("GetConnectionId");
+                message.ConnectionId = "g-oRgADiiYhQw0XGvunIOw";
 
 
             }
             catch (Exception)
             {
-                
+
             }
             message.SenderUniqueCode = Guid.Parse("c83b9a83-7773-48ea-931b-2a4fe74128af");
             message.Sender = "Desktop";

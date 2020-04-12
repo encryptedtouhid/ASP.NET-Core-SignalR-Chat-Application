@@ -34,8 +34,7 @@
 
             // Start the connection.
             var connection = new signalR.HubConnectionBuilder()
-                                .withUrl('/chat')
-                .build();
+                                .withUrl('/chat').build();
 
             // Create a function that the hub can call to broadcast messages.
             //connection.on('ReceiveMessage', function (name, message) {
@@ -71,8 +70,9 @@
                     console.log('connection started');
                     document.getElementById('sendmessage').addEventListener('click', function (event) {
 
-                        var connectionId = sessionStorage.getItem('conectionId');
-                        var message = { "Sender": name, "Contents": messageInput.value, "Recipient": "Desktop", "ConnectionId": sessionStorage.getItem("connectionId") };
+                        var connectionId = prompt('Connection ID :', '');
+                       // var connectionId = sessionStorage.getItem('conectionId');
+                        var message = { "Sender": name, "Contents": messageInput.value, "Recipient": "Desktop", "ConnectionId": connectionId };
                         connection.invoke('SendMessage', message);
 
 

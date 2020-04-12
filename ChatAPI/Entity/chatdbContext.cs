@@ -16,6 +16,7 @@ namespace ChatAPI.Entity
         }
 
         public virtual DbSet<Message> Message { get; set; }
+        public virtual DbSet<PrivateChat> PrivateChat { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

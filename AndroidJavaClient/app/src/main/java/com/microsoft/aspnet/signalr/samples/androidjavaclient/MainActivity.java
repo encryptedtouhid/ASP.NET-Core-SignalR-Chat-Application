@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         msg.Sender = "saif";
         msg.Recipient = "khaled";
         msg.SenderConnectionId = hubConnection.getConnectionId();
-        msg.RecipientConnectionId = "ZFfKNSA-zQR7OmCWkWz6Qw";
+        msg.RecipientConnectionId = "Dw4ZFei2lOHUy6kjx0zCoQ";
 
 
 

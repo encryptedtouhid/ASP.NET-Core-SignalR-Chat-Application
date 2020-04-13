@@ -1,3 +1,7 @@
 ChatService/ChatService/Properties/PublishProfiles/qc.codexen.net - Web Deploy.pubxml
 ChatService/ChatService/bin
 ChatService/ChatService/obj
+ChatService/.vs/ChatService/DesignTimeBuild/.dtbcache.v2
+ChatService/ChatService/Properties/PublishProfiles/h2hchatserver - FTP.pubxml
+ChatService/ChatService/Properties/PublishProfiles/h2hchatserver - ReadOnly - FTP.pubxml
+ChatService/ChatService/Properties/PublishProfiles/h2hchatserver - Web Deploy.pubxml

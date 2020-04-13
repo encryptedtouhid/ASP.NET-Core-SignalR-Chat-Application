@@ -72,7 +72,16 @@
 
                         var RecipientConnectionId = prompt('Connection ID :', '');
                        // var connectionId = sessionStorage.getItem('conectionId');
-                        var message = { "Sender": name, "Contents": messageInput.value, "Recipient": "Desktop", "RecipientConnectionId": RecipientConnectionId, "SenderConnectionId": sessionStorage.getItem('SenderConnectionId') };
+                        var message = {
+                            
+                            "Contents": messageInput.value,
+                            "RecipientName": "Desktop",
+                            "RecipientConnectionId": RecipientConnectionId,
+                            "RecipientUniqueCode": "dbcb2076-d905-4249-bc81-0fd9db26661f",
+                            "SenderConnectionId": sessionStorage.getItem('SenderConnectionId'),
+                            "SenderName": name,
+                            "SenderUniqueCode": "ed5e0777-22a5-4052-899e-0738056a18a3"
+                        };
                         connection.invoke('SendMessage', message);
 
 

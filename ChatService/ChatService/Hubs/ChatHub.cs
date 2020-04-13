@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using ChatService.Entity;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Threading.Tasks;
 
@@ -6,6 +7,8 @@ namespace ChatSample.Hubs
 {
     public class ChatHub : Hub
     {
+        chatdbContext dbContext = new chatdbContext();
+
         public string GetConnectionId()
         {
             return Context.ConnectionId;
@@ -17,9 +20,23 @@ namespace ChatSample.Hubs
 
         public async Task SendMessage(Message message)
         {
+
+            ChatService.Entity.Message msg = new ChatService.Entity.Message();
+            msg.MessageUniqueCode = Guid.NewGuid();
+            msg.RecipientConnectionId = message.RecipientConnectionId;
+            msg.RecipientName = message.RecipientName;
+            msg.RecipientUniqueCode = message.RecipientUniqueCode;
+            msg.SenderConnectionId = message.SenderConnectionId;
+            msg.SenderName = message.SenderName;
+            msg.SenderUniqueCode = message.SenderUniqueCode;
+            msg.Timestamp = System.DateTime.Now;
+
+            dbContext.Message.Add(msg);
+            dbContext.SaveChanges();
+
             message.Timestamp = DateTime.Now;
-            await Clients.Client(message.SenderConnectionId).SendAsync("ReceiveMessage", message.Sender, message.Contents);
-            await Clients.Client(message.RecipientConnectionId).SendAsync("ReceiveMessage", message.Sender, message.Contents);
+            await Clients.Client(message.SenderConnectionId).SendAsync("ReceiveMessage", message.SenderName, message.Contents);
+            await Clients.Client(message.RecipientConnectionId).SendAsync("ReceiveMessage", message.SenderName, message.Contents);
         }
 
         //public async Task SendMessage(Message message)

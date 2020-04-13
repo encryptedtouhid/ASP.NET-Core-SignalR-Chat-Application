@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ChatSample
+namespace ChatService.Entity
 {
     public partial class Message
     {
@@ -16,6 +14,6 @@ namespace ChatSample
         public string SenderName { get; set; }
         public string RecipientConnectionId { get; set; }
         public string SenderConnectionId { get; set; }
-       
+        public Guid? MessageUniqueCode { get; set; }
     }
 }

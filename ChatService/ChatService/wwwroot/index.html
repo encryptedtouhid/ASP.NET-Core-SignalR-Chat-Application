@@ -60,19 +60,19 @@
                 .then(function () {
 
                     connection.invoke('GetConnectionId')
-                        .then(function (connectionId) {
-                            connectionId = connectionId;
-                            sessionStorage.setItem("connectionId", connectionId);
-                            console.log(connectionId);
+                        .then(function (SenderConnectionId) {
+                            SenderConnectionId = SenderConnectionId;
+                            sessionStorage.setItem("SenderConnectionId", SenderConnectionId);
+                            console.log(SenderConnectionId);
                         }).catch(err => console.error(err.toString()));;
 
 
                     console.log('connection started');
                     document.getElementById('sendmessage').addEventListener('click', function (event) {
 
-                        var connectionId = prompt('Connection ID :', '');
+                        var RecipientConnectionId = prompt('Connection ID :', '');
                        // var connectionId = sessionStorage.getItem('conectionId');
-                        var message = { "Sender": name, "Contents": messageInput.value, "Recipient": "Desktop", "ConnectionId": connectionId };
+                        var message = { "Sender": name, "Contents": messageInput.value, "Recipient": "Desktop", "RecipientConnectionId": RecipientConnectionId, "SenderConnectionId": sessionStorage.getItem('SenderConnectionId') };
                         connection.invoke('SendMessage', message);
 
 

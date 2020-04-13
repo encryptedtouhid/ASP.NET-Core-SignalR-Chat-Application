@@ -18,7 +18,8 @@ namespace ChatSample.Hubs
         public async Task SendMessage(Message message)
         {
             message.Timestamp = DateTime.Now;
-            await Clients.Client(message.ConnectionId).SendAsync("ReceiveMessage", message.Sender, message.Contents);
+            await Clients.Client(message.SenderConnectionId).SendAsync("ReceiveMessage", message.Sender, message.Contents);
+            await Clients.Client(message.RecipientConnectionId).SendAsync("ReceiveMessage", message.Sender, message.Contents);
         }
 
         //public async Task SendMessage(Message message)

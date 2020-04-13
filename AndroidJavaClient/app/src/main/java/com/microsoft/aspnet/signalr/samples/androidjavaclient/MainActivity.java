@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         //SendMessage(Message message);
 
         msg = new Message();
-        msg.Contents = "hi";
-        msg.Sender = "saif";
-        msg.Recipient = "khaled";
+        msg.Contents = editText.getText().toString();
+        msg.Sender = "Android";
+        msg.Recipient = "Web";
         msg.SenderConnectionId = hubConnection.getConnectionId();
-        msg.RecipientConnectionId = "Dw4ZFei2lOHUy6kjx0zCoQ";
+        msg.RecipientConnectionId = "d0KeDdJWX4McM1yd68EwYw";
 
 
 
